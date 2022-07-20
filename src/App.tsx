@@ -4,17 +4,7 @@ import { NetworkProvider } from './network';
 import logo from './logo.svg';
 import './App.css';
 
-// const wrapHOC = <P,>(WrappedComponent: React.ComponentType<P>) => (props: P) => {
-//   return (
-//     <Web3Provider>
-//       <NetworkProvider>
-//         <WrappedComponent {...props} />
-//       </NetworkProvider>
-//     </Web3Provider>
-//   );
-// }
-
-const wrapHOC = (WrappedComponent: React.FC) => ({...props}) => {
+const wrapHOC = <P,>(WrappedComponent: React.ComponentType<P>) => (props: P) => {
   return (
     <Web3Provider>
       <NetworkProvider>

@@ -19,7 +19,7 @@ const NetworkContext = React.createContext<Context>([
   {},
 ]);
 
-export const NetworkProvider: React.FC<{children: any}> = ({ children }) => {
+export const NetworkProvider: React.ComponentType<{ children: any }> = ({ children }) => {
   // const [{web3Onboard}] = useWeb3();
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const connectedWallets = useWallets();

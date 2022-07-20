@@ -18,7 +18,7 @@ const Web3Context = React.createContext<Context>([
   {},
 ]);
 
-export const Web3Provider: React.FC<{children: any}> = ({ children }) => {
+export const Web3Provider: React.ComponentType<{children: any}> = ({ children }) => {
   const [web3Onboard, setWeb3Onboard] = useState<OnboardAPI>();
 
   useEffect(() => {
