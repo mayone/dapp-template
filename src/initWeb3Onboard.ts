@@ -1,6 +1,8 @@
 import { init } from '@web3-onboard/react';
 import injectedModule from '@web3-onboard/injected-wallets';
 import carbonWallet from './constants/carbonWallet';
+import appLogo from './assets/dapp-logo.svg';
+import appIcon from './assets/dapp-icon.svg';
 
 const infuraKey = 'de6e66cb509c43e0897d062c93f15d9e';
 
@@ -79,10 +81,10 @@ const initWeb3Onboard = init({
   ],
   appMetadata: {
     name: 'DApp Template',
-    //#Todo we need carbon bridge Dapp icon
-    icon: 'todo',
-    //#Todo we need carbon bridge Dapp logo
-    logo: 'todo',
+    // #NOTE: DApp Icon in Account Center
+    icon: appIcon,
+    // #NOTE: DApp Logo in Onboard
+    logo: appLogo,
     description: 'Welcome to DApp Template',
     // gettingStartedGuide?: string;
     // explore?: string;
@@ -94,8 +96,7 @@ const initWeb3Onboard = init({
       },
       {
         name: 'Carbon wallet',
-        //#Todo we need carbon wallet's url
-        url: 'https://metamask.io/',
+        url: 'https://chrome.google.com/webstore/detail/carbon-wallet/pnphepacpjpklpbacfmebicbgndobakn',
       },
     ],
     // agreement?: TermsOfServiceAgreementOptions | null;
