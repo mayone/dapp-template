@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import type { OnboardAPI } from '@web3-onboard/core';
 import { useConnectWallet, useWallets } from '@web3-onboard/react';
 import { useWeb3 } from './web3';
+import delay from './utils/delay';
 
 interface ContextData {
   web3Onboard?: OnboardAPI;
@@ -31,6 +32,7 @@ export const NetworkProvider: React.ComponentType<{ children: any }> = ({ childr
 
     if (prevConnectedWallets?.length) {
       (async () => {
+        await delay(100);
         // await connect({
         //   autoSelect: prevConnectedWallets[0],
         // });
@@ -46,6 +48,7 @@ export const NetworkProvider: React.ComponentType<{ children: any }> = ({ childr
       })();
     } else {
       (async () => {
+        await delay(100);
         await connect();
         setWalletInitialized(true);
       })();
