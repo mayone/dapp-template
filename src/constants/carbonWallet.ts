@@ -1,12 +1,14 @@
+import type { EIP1193Provider } from '@web3-onboard/common/dist/types';
 import {
   InjectedWalletModule,
   InjectedNameSpace,
+  InjectedProvider,
 } from '@web3-onboard/injected-wallets/dist/types';
 import carbonWalletIcon from '../assets/carbonwallet-icon.svg';
 
 declare global {
   interface Window {
-    carbon: any;
+    carbon: EIP1193Provider;
   }
 }
 
@@ -22,7 +24,7 @@ const carbonWallet: InjectedWalletModule = {
   // In most cases this is in the format: `is<provider-name>`.
   // You may also include custom logic here if checking for the property
   // isn't sufficient.
-  checkProviderIdentity: ({ provider }: { provider: any }) =>
+  checkProviderIdentity: ({ provider }: { provider: InjectedProvider }) =>
     !!provider && !!provider['isCarbon'],
 
   // A method that returns a string of the wallet icon which will be displayed
