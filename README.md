@@ -1,6 +1,6 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# DApp Template
+![example workflow](https://github.com/mayone/dapp-template/actions/workflows/integrate.yml/badge.svg)
+![example workflow](https://github.com/mayone/dapp-template/actions/workflows/deploy.yml/badge.svg)
 
 ## Available Scripts
 
