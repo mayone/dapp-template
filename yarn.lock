@@ -2955,22 +2955,23 @@
     "@typescript-eslint/types" "5.30.7"
     eslint-visitor-keys "^3.3.0"
 
-"@web3-onboard/common@^2.1.6":
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/@web3-onboard/common/-/common-2.1.6.tgz#29d1a4a98b24a08af9f532707225ad5054e25bb6"
-  integrity sha512-mVmkjM/hI4WeK9uN3TNt/+v7VtNdwoTbAzTRAOcUSIZRK3q1ptWQoL0tydRimXCTfvv+EUJxlJHb+1+QqmRVPw==
+"@web3-onboard/common@^2.1.7":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@web3-onboard/common/-/common-2.1.7.tgz#62c74726ed9dd6e8baadab1e6aec6462d62e7d2d"
+  integrity sha512-4nJvfNl0t5D17B1jD8H9BNBtUOVDDHxyxmRyQxnv1u1D5dgdd2I/mUVGhee0xWIHgMy9ORjuJCApraYCwZfgJA==
   dependencies:
     "@ethereumjs/common" "2.6.2"
+    bignumber.js "^9.0.0"
     ethers "5.5.4"
     joi "^17.4.2"
     rxjs "^7.5.2"
 
-"@web3-onboard/core@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@web3-onboard/core/-/core-2.5.0.tgz#0804d136b5fb5e42fde259e6cdfe2bfd48b4b489"
-  integrity sha512-UHyogYHo2dkB/mvRwjnvdmND1XN8M2tQbHsO7jcnkNOfq8+4CBujdEbsHlkJJgw09UOT/taER7IkrcmOLlPKrg==
+"@web3-onboard/core@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@web3-onboard/core/-/core-2.6.0.tgz#978b41211780189d9f5fb2f8f3259659bf6022e2"
+  integrity sha512-mxX4kMKetSqp/kDWYEZYqpIeDx7s3Q2i+XgS9FAaNDv+Rbv95CC/AC5zxpxiUy2zsixe8avTZtKoPXRV7y0Wag==
   dependencies:
-    "@web3-onboard/common" "^2.1.6"
+    "@web3-onboard/common" "^2.1.7"
     bignumber.js "^9.0.0"
     bnc-sdk "^4.4.1"
     bowser "^2.11.0"
@@ -2984,22 +2985,22 @@
     svelte "^3.46.4"
     svelte-i18n "^3.3.13"
 
-"@web3-onboard/injected-wallets@^2.0.14":
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/@web3-onboard/injected-wallets/-/injected-wallets-2.0.14.tgz#8c5d1ffa301f7b2b9aaf84e7dde940498fcde0c8"
-  integrity sha512-CridpyJ6OVYVKTIDHzr5rLehiB4c+okbSZZ1H+J4nJU4e7fYmPSNAe7OKCjyMRQmVKI86SdjZaQ4YLlgf1e7Rg==
+"@web3-onboard/injected-wallets@^2.0.15":
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/@web3-onboard/injected-wallets/-/injected-wallets-2.0.15.tgz#ad1cfe3d0ffc20c2383e813a1f25d4f4c1f88562"
+  integrity sha512-hx32yrYWtNbLxKJvIYmKRp0dJUre+Yuc9l3JIUXO4IV1XMXiCAKxKEiJOyloaPREummCNU8+q0pXtmpdYfVrrQ==
   dependencies:
-    "@web3-onboard/common" "^2.1.6"
+    "@web3-onboard/common" "^2.1.7"
     joi "^17.4.2"
     lodash.uniqby "^4.7.0"
 
-"@web3-onboard/react@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@web3-onboard/react/-/react-2.2.4.tgz#8adf862ebd0689d683c87d80c708151cd9355f69"
-  integrity sha512-xhn47dhpHTo7lHucKHcxHkidf1MIjIPFvGeUKQkHy8MYi0/W4mbptjbaGEVgOLs9Df7whBi395SuLUK/nP4ldQ==
+"@web3-onboard/react@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@web3-onboard/react/-/react-2.2.5.tgz#66c4727e9e86a4b05d93e05e962be0bdaac58149"
+  integrity sha512-/GhzdXIWGNUfhOdcFBi4Dj1dLEX/SX55PjylcbTaQcJAWG3PetlxdTJMgncD0nS9bp2cwS4j9rGe78pv4GJ98Q==
   dependencies:
-    "@web3-onboard/common" "^2.1.6"
-    "@web3-onboard/core" "^2.5.0"
+    "@web3-onboard/common" "^2.1.7"
+    "@web3-onboard/core" "^2.6.0"
     use-sync-external-store "1.0.0"
 
 "@webassemblyjs/ast@1.11.1":
