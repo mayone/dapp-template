@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import type { OnboardAPI } from '@web3-onboard/core';
+import type { OnboardAPI, ConnectOptions } from '@web3-onboard/core';
 import { useConnectWallet, useWallets } from '@web3-onboard/react';
 import { useWeb3 } from './web3';
 import delay from './utils/delay';
@@ -20,6 +20,28 @@ const NetworkContext = React.createContext<Context>([
   {},
 ]);
 
+const autoConnect = async (
+  prevConnectedWallets: any,
+  connect: (options?: ConnectOptions) => Promise<void>,
+  onComplete: () => void,
+) => {
+  await delay(100);
+  if (prevConnectedWallets?.length) {
+    for (const walletLabel of prevConnectedWallets.reverse()) {
+      await connect({
+        autoSelect: {
+          label: walletLabel,
+          disableModals: true,
+        },
+      });
+    }
+  } else {
+    await connect();
+  }
+
+  onComplete();
+};
+
 export const NetworkProvider: React.ComponentType<{ children: any }> = ({ children }) => {
   // const [{web3Onboard}] = useWeb3();
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
@@ -30,29 +52,7 @@ export const NetworkProvider: React.ComponentType<{ children: any }> = ({ childr
     const prevConnectedWalletsStr = window.localStorage.getItem('connectedWallets');
     const prevConnectedWallets = prevConnectedWalletsStr ? JSON.parse(prevConnectedWalletsStr) : null;
 
-    if (prevConnectedWallets?.length) {
-      (async () => {
-        await delay(100);
-        // await connect({
-        //   autoSelect: prevConnectedWallets[0],
-        // });
-        for (const walletLabel of prevConnectedWallets.reverse()) {
-          await connect({
-            autoSelect: {
-              label: walletLabel,
-              disableModals: true,
-            },
-          });
-        }
-        setWalletInitialized(true);
-      })();
-    } else {
-      (async () => {
-        await delay(100);
-        await connect();
-        setWalletInitialized(true);
-      })();
-    }
+    autoConnect(prevConnectedWallets, connect, () => setWalletInitialized(true));
   }, [connect]);
 
   useEffect(() => {
