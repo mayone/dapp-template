@@ -101,6 +101,9 @@ const initWeb3Onboard = init({
     ],
     // agreement?: TermsOfServiceAgreementOptions | null;
   },
+  connect: {
+    showSidebar: false,
+  }
 });
 
 export default initWeb3Onboard;
