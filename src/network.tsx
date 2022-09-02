@@ -5,7 +5,7 @@ import { useWeb3 } from './web3';
 import delay from './utils/delay';
 
 interface ContextData {
-  web3Onboard?: OnboardAPI;
+  data?: any;
 }
 
 interface ContextActions {
@@ -76,9 +76,18 @@ export const NetworkProvider: React.ComponentType<{ children: any }> = ({ childr
   // }
 
   return (
-    <>
+    <NetworkContext.Provider
+      value={[
+        {
+          // Data
+        },
+        {
+          // Actions
+        },
+      ]}
+    >
       {children}
-    </>
+    </NetworkContext.Provider>
   )
 }
 
