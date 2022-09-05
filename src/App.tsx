@@ -1,16 +1,17 @@
 import React from 'react';
-import { Web3Provider } from './web3';
+import { Web3OnboardProvider } from '@web3-onboard/react';
+import initWeb3Onboard from './initWeb3Onboard';
 import { NetworkProvider } from './network';
 import logo from './logo.svg';
 import './App.css';
 
 const wrapHOC = <P,>(WrappedComponent: React.ComponentType<P>) => (props: P) => {
   return (
-    <Web3Provider>
+    <Web3OnboardProvider web3Onboard={initWeb3Onboard}>
       <NetworkProvider>
         <WrappedComponent {...props} />
       </NetworkProvider>
-    </Web3Provider>
+    </Web3OnboardProvider>
   );
 }
 

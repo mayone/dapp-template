@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
-import type { OnboardAPI, ConnectOptions } from '@web3-onboard/core';
+import type { ConnectOptions, WalletState } from '@web3-onboard/core';
 import { useConnectWallet, useWallets } from '@web3-onboard/react';
-import { useWeb3 } from './web3';
 import delay from './utils/delay';
 
 interface ContextData {
@@ -20,9 +19,9 @@ const NetworkContext = React.createContext<Context>([
   {},
 ]);
 
-const autoConnect = async (
+const reConnect = async (
   prevConnectedWallets: any,
-  connect: (options?: ConnectOptions) => Promise<void>,
+  connect: (options?: ConnectOptions) => Promise<WalletState[]>,
   onComplete: () => void,
 ) => {
   await delay(100);
@@ -35,15 +34,12 @@ const autoConnect = async (
         },
       });
     }
-  } else {
-    await connect();
   }
 
   onComplete();
 };
 
 export const NetworkProvider: React.ComponentType<{ children: any }> = ({ children }) => {
-  // const [{web3Onboard}] = useWeb3();
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const connectedWallets = useWallets();
   const [walletInitialized, setWalletInitialized] = useState(false);
@@ -52,7 +48,7 @@ export const NetworkProvider: React.ComponentType<{ children: any }> = ({ childr
     const prevConnectedWalletsStr = window.localStorage.getItem('connectedWallets');
     const prevConnectedWallets = prevConnectedWalletsStr ? JSON.parse(prevConnectedWalletsStr) : null;
 
-    autoConnect(prevConnectedWallets, connect, () => setWalletInitialized(true));
+    reConnect(prevConnectedWallets, connect, () => setWalletInitialized(true));
   }, [connect]);
 
   useEffect(() => {
