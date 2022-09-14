@@ -39,7 +39,11 @@ const reConnect = async (
   onComplete();
 };
 
-export const NetworkProvider: React.ComponentType<{ children: any }> = ({ children }) => {
+interface ProviderProps {
+	children?: React.ReactNode;
+}
+
+export const NetworkProvider: React.ComponentType<ProviderProps> = ({ children }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const connectedWallets = useWallets();
   const [walletInitialized, setWalletInitialized] = useState(false);
