@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import type { ConnectOptions, WalletState } from '@web3-onboard/core';
 import { useConnectWallet, useWallets } from '@web3-onboard/react';
 import delay from './utils/delay';
+import { reConnectWallets, updateWallets } from './utils/wallets';
 
 interface ContextData {
   data?: any;
@@ -19,54 +20,30 @@ const NetworkContext = React.createContext<Context>([
   {},
 ]);
 
-const reConnect = async (
-  prevConnectedWallets: any,
-  connect: (options?: ConnectOptions) => Promise<WalletState[]>,
-  onComplete: () => void,
-) => {
-  await delay(100);
-  if (prevConnectedWallets?.length) {
-    for (const walletLabel of prevConnectedWallets.reverse()) {
-      await connect({
-        autoSelect: {
-          label: walletLabel,
-          disableModals: true,
-        },
-      });
-    }
-  }
-
-  onComplete();
-};
-
 interface ProviderProps {
-	children?: React.ReactNode;
+  children?: React.ReactNode;
+  isAutoConnectDisabled?: Boolean;
 }
 
-export const NetworkProvider: React.ComponentType<ProviderProps> = ({ children }) => {
+export const NetworkProvider: React.ComponentType<ProviderProps> = ({ children, isAutoConnectDisabled }) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const connectedWallets = useWallets();
   const [walletInitialized, setWalletInitialized] = useState(false);
 
   useEffect(() => {
-    const prevConnectedWalletsStr = window.localStorage.getItem('connectedWallets');
-    const prevConnectedWallets = prevConnectedWalletsStr ? JSON.parse(prevConnectedWalletsStr) : null;
-
-    reConnect(prevConnectedWallets, connect, () => setWalletInitialized(true));
+    (async () => {
+      // Wait for wallet providers to be injected.
+      await delay(100);
+      reConnectWallets(connect, () => setWalletInitialized(true));
+    })();
   }, [connect]);
 
   useEffect(() => {
     if (!walletInitialized) return;
 
-    const connectedWalletsLabelArray = connectedWallets.map(
-      ({ label }) => label
-    )
-    window.localStorage.setItem(
-      'connectedWallets',
-      JSON.stringify(connectedWalletsLabelArray),
-    )
+    updateWallets(connectedWallets);
 
-    if (!connectedWallets.length) {
+    if (!isAutoConnectDisabled && !connectedWallets.length) {
       connect();
     }
   }, [connectedWallets, walletInitialized, connect]);
