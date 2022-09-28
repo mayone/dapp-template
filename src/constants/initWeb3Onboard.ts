@@ -1,8 +1,8 @@
 import { init } from '@web3-onboard/react';
 import injectedModule from '@web3-onboard/injected-wallets';
-import carbonWallet from './constants/carbonWallet';
-import appLogo from './assets/dapp-logo.svg';
-import appIcon from './assets/dapp-icon.svg';
+import carbonWallet from './carbonWallet';
+import appLogo from '../assets/dapp-logo.svg';
+import appIcon from '../assets/dapp-icon.svg';
 
 const infuraKey = 'de6e66cb509c43e0897d062c93f15d9e';
 

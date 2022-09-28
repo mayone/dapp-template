@@ -1,6 +1,6 @@
 import React from 'react';
 import { Web3OnboardProvider } from '@web3-onboard/react';
-import initWeb3Onboard from './initWeb3Onboard';
+import initWeb3Onboard from './constants/initWeb3Onboard';
 import { NetworkProvider } from './network';
 import logo from './logo.svg';
 import './App.css';
