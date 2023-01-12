@@ -34,7 +34,7 @@ const carbonWallet: InjectedWalletModule = {
     provider: window.carbon,
   }),
   // A list of platforms that this wallet supports
-  platforms: ['desktop'],
+  platforms: ['desktop', 'mobile'],
 };
 
 export default carbonWallet;
