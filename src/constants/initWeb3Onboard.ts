@@ -103,7 +103,8 @@ const initWeb3Onboard = init({
   },
   connect: {
     showSidebar: false,
-  }
+  },
+  theme: 'system',
 });
 
 export default initWeb3Onboard;
