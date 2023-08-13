@@ -23,8 +23,12 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "BUILD_MODE=development react-app-rewired start",
+    "build": "BUILD_MODE=development react-app-rewired build",
+    "start:stg": "BUILD_MODE=staging react-app-rewired start",
+    "start:prod": "BUILD_MODE=production react-app-rewired start",
+    "build:stg": "BUILD_MODE=staging react-app-rewired build",
+    "build:prod": "BUILD_MODE=production react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },

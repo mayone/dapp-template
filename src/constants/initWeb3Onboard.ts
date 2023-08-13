@@ -37,48 +37,105 @@ const injected = injectedModule({
   custom: [carbonWallet],
 });
 
+const mainnets = [
+  {
+    id: '0x1',
+    token: 'ETH',
+    label: 'Ethereum Mainnet',
+    rpcUrl: `https://mainnet.infura.io/v3/${infuraKey}`,
+    blockExplorerUrl: 'https://etherscan.io/',
+  },
+  {
+    id: '0x38',
+    token: 'BNB',
+    label: 'BNB Smart Chain Mainnet',
+    rpcUrl: 'https://bsc-dataseed1.binance.org/',
+    blockExplorerUrl: 'https://bscscan.com/',
+  },
+  {
+    id: '0x343B',
+    token: 'ACT',
+    label: 'Amino X',
+    color: 'white',
+    icon: aminoXIcon,
+    rpcUrl: 'https://aminox.node.alphacarbon.network/',
+    blockExplorerUrl: 'https://aminox.blockscout.alphacarbon.network/',
+  },
+  {
+    id: '0x89',
+    token: 'MATIC',
+    label: 'Polygon Mainnet',
+    rpcUrl: 'https://polygon-rpc.com',
+    blockExplorerUrl: 'https://polygonscan.com/',
+  },
+];
+
+const testnets = [
+  // {
+  //   id: '0x4',
+  //   token: 'ETH',
+  //   label: 'Rinkeby Testnet',
+  //   rpcUrl: `https://rinkeby.infura.io/v3/${infuraKey}`,
+  //   blockExplorerUrl: 'https://rinkeby.etherscan.io/',
+  // },
+  {
+    id: '0x5',
+    token: 'ETH',
+    label: 'Goerli Testnet',
+    rpcUrl: `https://goerli.infura.io/v3/${infuraKey}`,
+    blockExplorerUrl: 'https://goerli.etherscan.io/',
+  },
+  {
+    id: '0x61',
+    token: 'BNB',
+    label: 'BNB Smart Chain Testnet',
+    rpcUrl: 'https://data-seed-prebsc-1-s3.binance.org:8545/',
+    blockExplorerUrl: 'https://testnet.bscscan.com/',
+  },
+  {
+    id: '0x343A',
+    token: 'TACT',
+    label: 'Amino X Testnet',
+    color: 'white',
+    icon: aminoXIcon,
+    rpcUrl: 'https://aminoxtestnet.node.alphacarbon.network/',
+    blockExplorerUrl:
+      'https://aminoxtestnet.blockscout.alphacarbon.network/',
+  },
+  {
+    id: '0x13881',
+    token: 'MATIC',
+    label: 'Mumbai',
+    rpcUrl: 'https://rpc-mumbai.maticvigil.com',
+    blockExplorerUrl: 'https://mumbai.polygonscan.com/',
+  },
+];
+
+const localTestnets = [
+  {
+    id: '0x539',
+    token: 'ETH',
+    label: 'ethereum geth',
+    rpcUrl: 'http://localhost:8545',
+    blockExplorerUrl: 'http://localhost',
+  },
+  {
+    id: '0x22B8',
+    token: 'TACT',
+    label: 'Amino X Testnet',
+    rpcUrl: 'http://localhost:9933',
+    blockExplorerUrl: 'http://localhost',
+  },
+];
+
 const initWeb3Onboard = init({
   wallets: [injected],
-  chains: [
-    {
-      id: '0x1',
-      token: 'ETH',
-      label: 'Ethereum Mainnet',
-      rpcUrl: `https://mainnet.infura.io/v3/${infuraKey}`,
-      blockExplorerUrl: 'https://etherscan.io/',
-    },
-    {
-      id: '0x38',
-      token: 'BNB',
-      label: 'BNB Smart Chain Mainnet',
-      rpcUrl: 'https://bsc-dataseed.binance.org/',
-      blockExplorerUrl: 'https://bscscan.com/',
-    },
-    {
-      id: '0x4',
-      token: 'ETH',
-      label: 'Rinkeby Testnet',
-      rpcUrl: `https://rinkeby.infura.io/v3/${infuraKey}`,
-      blockExplorerUrl: 'https://rinkeby.etherscan.io/',
-    },
-    {
-      id: '0x61',
-      token: 'BNB',
-      label: 'BNB Smart Chain Testnet',
-      rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-      blockExplorerUrl: 'https://testnet.bscscan.com/',
-    },
-    {
-      id: '0x343A',
-      token: 'TACT',
-      label: 'Amino X Testnet',
-      color: 'white',
-      icon: aminoXIcon,
-      rpcUrl: 'https://aminoxtestnet.node.alphacarbon.network/',
-      blockExplorerUrl:
-        'https://aminoxtestnet.blockscout.alphacarbon.network/',
-    },
-  ],
+  chains:
+    process.env.BUILD_MODE === 'production'
+      ? mainnets
+      : process.env.BUILD_MODE === 'staging'
+        ? testnets
+        : localTestnets,
   appMetadata: {
     name: 'DApp Template',
     // #NOTE: DApp Icon in Account Center

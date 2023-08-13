@@ -15,7 +15,8 @@ module.exports = function override(config) {
     new webpack.ProvidePlugin({
       process: 'process/browser',
       Buffer: ['buffer', 'Buffer']
-    })
+    }),
+    new webpack.EnvironmentPlugin(['BUILD_MODE'])
   ])
   config.module.rules.unshift({
     test: /\.m?js$/,
