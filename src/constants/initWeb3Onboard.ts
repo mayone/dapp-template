@@ -161,6 +161,7 @@ const initWeb3Onboard = init({
   connect: {
     showSidebar: false,
   },
+  // Theming Tool: https://onboard.blocknative.com/theming-tool
   theme: 'system',
 });
 
