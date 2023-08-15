@@ -18,6 +18,7 @@ module.exports = function override(config) {
     }),
     new webpack.EnvironmentPlugin(['BUILD_MODE'])
   ])
+  config.ignoreWarnings = [/Failed to parse source map/]
   config.module.rules.unshift({
     test: /\.m?js$/,
     resolve: {

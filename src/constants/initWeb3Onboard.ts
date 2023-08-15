@@ -1,5 +1,6 @@
 import { init } from '@web3-onboard/react';
 import injectedModule from '@web3-onboard/injected-wallets';
+import walletConnectModule from '@web3-onboard/walletconnect';
 import carbonWallet from './carbonWallet';
 import appLogo from '../assets/dapp-logo.svg';
 import appIcon from '../assets/dapp-icon.svg';
@@ -36,6 +37,25 @@ const aminoXIcon = `
 const injected = injectedModule({
   custom: [carbonWallet],
 });
+
+const wcInitOptions = {
+  /**
+   * Project ID associated with [WalletConnect account](https://cloud.walletconnect.com)
+   * Account: mayone321@gmail.com
+   */
+  projectId: '2ee01401e3557fa12ac82ca9721cf23f',
+  /**
+   * Chains required to be supported by all wallets connecting to your DApp
+   */
+  requiredChains: [1],
+  /**
+   * Defaults to `appMetadata.explore` that is supplied to the web3-onboard init
+   * Strongly recommended to provide atleast one URL as it is required by some wallets (i.e. MetaMask)
+   * To connect with WalletConnect
+   */
+  dappUrl: 'https://mayone.github.io/dapp-template/'
+}
+const walletConnect = walletConnectModule(wcInitOptions);
 
 const mainnets = [
   {
@@ -129,7 +149,7 @@ const localTestnets = [
 ];
 
 const initWeb3Onboard = init({
-  wallets: [injected],
+  wallets: [injected, walletConnect],
   chains:
     process.env.BUILD_MODE === 'production'
       ? mainnets
