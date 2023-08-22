@@ -1,6 +1,19 @@
 import React from 'react';
+import { Web3OnboardProvider } from '@web3-onboard/react';
+import initWeb3Onboard from './constants/initWeb3Onboard';
+import { NetworkProvider } from './network';
 import logo from './logo.svg';
 import './App.css';
+
+const wrapHOC = <P,>(WrappedComponent: React.ComponentType<P>) => (props: P & {}) => {
+  return (
+    <Web3OnboardProvider web3Onboard={initWeb3Onboard}>
+      <NetworkProvider>
+        <WrappedComponent {...props} />
+      </NetworkProvider>
+    </Web3OnboardProvider>
+  );
+}
 
 function App() {
   return (
@@ -23,4 +36,6 @@ function App() {
   );
 }
 
-export default App;
+const WrappedApp = wrapHOC(App)
+
+export default WrappedApp;
