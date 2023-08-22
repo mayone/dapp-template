@@ -1,6 +1,7 @@
 # DApp Template
-![example workflow](https://github.com/mayone/dapp-template/actions/workflows/integrate.yml/badge.svg)
-![example workflow](https://github.com/mayone/dapp-template/actions/workflows/deploy.yml/badge.svg)
+
+[![Node.js CI](https://github.com/mayone/dapp-template/actions/workflows/integrate.yml/badge.svg)](https://github.com/mayone/dapp-template/actions/workflows/integrate.yml)
+[![Publish Github Pages (Staging)](https://github.com/mayone/dapp-template/actions/workflows/publish-gh-pages.yml/badge.svg)](https://github.com/mayone/dapp-template/actions/workflows/publish-gh-pages.yml)
 
 ## Available Scripts
 
