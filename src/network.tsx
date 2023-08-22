@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import type { ConnectOptions, WalletState } from '@web3-onboard/core';
+// import type { ConnectOptions, WalletState } from '@web3-onboard/core';
 import { useConnectWallet, useWallets } from '@web3-onboard/react';
 import delay from './utils/delay';
 import { reConnectWallets, updateWallets } from './utils/wallets';
@@ -26,7 +26,7 @@ interface ProviderProps {
 }
 
 export const NetworkProvider: React.ComponentType<ProviderProps> = ({ children, isAutoConnectDisabled }) => {
-  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+  const [, connect] = useConnectWallet();
   const connectedWallets = useWallets();
   const [walletInitialized, setWalletInitialized] = useState(false);
 
@@ -46,7 +46,7 @@ export const NetworkProvider: React.ComponentType<ProviderProps> = ({ children, 
     if (!isAutoConnectDisabled && !connectedWallets.length) {
       connect();
     }
-  }, [connectedWallets, walletInitialized, connect]);
+  }, [connectedWallets, walletInitialized, isAutoConnectDisabled, connect]);
 
   // if (connecting) {
   //   return null;
