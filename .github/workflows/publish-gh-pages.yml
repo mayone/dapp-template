@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Publish Github Pages (Staging)
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           yarn
-          yarn build
+          yarn build:stg
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
