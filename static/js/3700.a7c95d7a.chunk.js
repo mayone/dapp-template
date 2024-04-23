@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdapp_template=self.webpackChunkdapp_template||[]).push([[3700],{3700:(e,a,p)=>{p.d(a,{take:()=>t.s,takeUntil:()=>k.Q});var t=p(5577),k=p(1473)}}]);
